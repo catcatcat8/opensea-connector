@@ -1,27 +1,64 @@
 import { Resource } from 'express-automatic-routes'
 import axios from 'axios'
+import { Request } from 'express'
 
-type ChainType = "arbitrum" | "avalanche" | "ethereum" | "matic" | "optimism"
-const chain: ChainType = "matic"
-
-const URL = `'https://opensea15.p.rapidapi.com/v2/orders/${chain}/seaport/listings'`
-const X_RapidAPI_Key = "'5f12d8eb3bmsh214ef05fe9ec8e7p13f5a3jsneffa551725d8'"
-const X_RapidAPI_Host = "'opensea15.p.rapidapi.com'"
+// type ChainType = 'arbitrum' | 'avalanche' | 'ethereum' | 'matic' | 'optimism'
+// type OrderDirection = 'asc' | 'desc'
+// const chain: ChainType = 'matic'
 
 export default (): Resource => ({
-  async get(_, res) {
-    
+  async get(
+    req: Request<
+      {},
+      {},
+      {},
+      {
+        chain?: string
+        asset_contract_address?: string
+        limit?: string
+        token_ids?: string
+        maker?: string
+        taker?: string
+        order_by?: string
+        order_direction?: string
+        listed_after?: string
+        listed_before?: string
+      }
+    >,
+    res
+  ) {
+    const {
+      chain,
+      asset_contract_address,
+      limit,
+      token_ids,
+      maker,
+      taker,
+      order_by,
+      order_direction,
+      listed_after,
+      listed_before,
+    } = req.query
+    if (!chain) return res.status(400).send('Chain not specified')
+
+    const URL = `https://opensea15.p.rapidapi.com/v2/orders/${chain}/seaport/listings`
     const options = {
       method: 'GET',
-      url: 'https://opensea15.p.rapidapi.com/v2/orders/matic/seaport/listings',
+      url: URL,
       params: {
-        maker: '0x666e416d73609f61C60d8A844066A0d956805118',
-        order_by: 'created_date',
-        order_direction: 'desc',
+        asset_contract_address: asset_contract_address,
+        limit: limit,
+        token_ids: token_ids,
+        maker: maker,
+        taker: taker,
+        order_by: order_by ?? 'created_date',
+        order_direction: order_direction ?? 'desc',
+        listed_after: listed_after,
+        listed_before: listed_before,
       },
       headers: {
-        'X-RapidAPI-Key': '5f12d8eb3bmsh214ef05fe9ec8e7p13f5a3jsneffa551725d8',
-        'X-RapidAPI-Host': 'opensea15.p.rapidapi.com',
+        'X-RapidAPI-Key': process.env.X_RapidAPI_Key,
+        'X-RapidAPI-Host': process.env.X_RapidAPI_Host,
       },
     }
     await axios
