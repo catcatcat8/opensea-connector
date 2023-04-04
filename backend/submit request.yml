@@ -1,0 +1,54 @@
+General
+
+Request URL: https://core-api.prod.blur.io/v1/orders/submit
+Request Method: POST
+Status Code: 201 
+Remote Address: 104.18.10.49:443
+Referrer Policy: strict-origin-when-cross-origin
+
+Response Headers
+
+access-control-allow-credentials: true
+access-control-allow-origin: https://blur.io
+cf-cache-status: DYNAMIC
+cf-ray: 7a3bbcd89c125135-IST
+content-length: 16
+content-type: application/json; charset=utf-8
+date: Mon, 06 Mar 2023 15:47:34 GMT
+etag: W/"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA"
+server: cloudflare
+vary: Origin
+x-ratelimit-limit: 1000000
+x-ratelimit-remaining: 999999
+x-ratelimit-reset: 0
+
+Request Headers
+
+:authority: core-api.prod.blur.io
+:method: POST
+:path: /v1/orders/submit
+:scheme: https
+accept: */*
+accept-encoding: gzip, deflate, br
+accept-language: ja;q=0.9
+content-length: 1142
+content-type: application/json
+cookie: rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19brTampIQBhSTwFG003tvgmdOsI7rMcaNAIRmAYfszWSwl04e8eM13; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BZmMwxQcC50JpvUvTAWd2DBtgGmwl4zZw%3D; authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3YWxsZXRBZGRyZXNzIjoiMHhmMDY0ZjA5NGMzYzZiMGMzYjA1NTYyMmQzNzlmMWI2MWIzM2NkNzgyIiwic2lnbmF0dXJlIjoiMHg5MDA5NTg3YzE1MWIyNmFkNGVkN2M1ZTE5ZGE1Mjc5M2M5YmFjNTg5MjRiZDA4Y2VmMDg3Mzg1ZmM0NmJkMTVjMWU1NzcyOTc4Mjk5YmI2ZjQ4OGJlNjhjNmIwNWMzYzgzNDU4YzUwNDZkOTA2MDExM2FlOWU4ODRjYzQwMzQyMjFiIiwiaWF0IjoxNjc4MDkxNTg3LCJleHAiOjE2ODA2ODM1ODd9.BHH97vKIOuRLS0FhQaCtFoTlXvD4OnMhOcaeJoSm1W8; walletAddress=0xf064f094c3c6b0c3b055622d379f1b61b33cd782; __cf_bm=gZym9GwP9kDGAZYkTLrAxr20rFZ0uXFGR6vMr86tmZ8-1678117599-0-AaBP1LfjQN8JGeef18dZsUkpvX9oeuoQm6Totr7n0YnpWvEfVXvRd/N3TAbuetyvdtTzJLJehq8WjbQUYXv9T2/JXr7RLkC7zcuKSvi/DwsH; rl_trait=RudderEncrypt%3AU2FsdGVkX18vrSo0qHff6d0Ihe77x6351BWOB%2BwhFhw%3D; rl_group_id=RudderEncrypt%3AU2FsdGVkX1%2FFyxFgbNcJs%2FPosIMQdsHbNRbag060Vzw%3D; rl_group_trait=RudderEncrypt%3AU2FsdGVkX18u7r%2FoMZnU0x8MN%2F4K7UcXzyiBmP8V%2FDQ%3D; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2B8BfVuM0LorvT8HMoucbNlhmghWdDPItyTb49HWPrvvykEMdMBmRPmJ0yWnFIzZqACrTOgim8PJw%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX18zVdaFT%2FSpKaVzXM6EYP7CRGXziSmEzWq%2Bjwk7YrGcNkkk1RPwbriJJc5SrciHnXash0LBxN%2Bblg%3D%3D; rl_session=RudderEncrypt%3AU2FsdGVkX1%2BPq2XbwXgmIOu789ANscxCAtVIi%2Be%2BUHNfPjhEcBym9c%2Bdfh4aV%2FwhEfAqi8vg7Km5zyETBSKS33SCT6bd6kFzmEMMMBOGFm0IlqJmT%2BiPirKa%2FRWeQXBMlTSIPYsi8nlb5JvrRmcsNQ%3D%3D
+origin: https://blur.io
+referer: https://blur.io/
+sec-ch-ua: "Chromium";v="110", "Not A(Brand";v="24", "Brave";v="110"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: same-site
+sec-gpc: 1
+user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36
+
+Payload
+
+{"signature":"0xd6a5cab9bb6270004a2d53b41ccb53b783e6768dc7bc7c3c80df1a50767d7af37f3a4fceafd8c8aca1c213e867e7c32a968deac19f56cc84e71d4e12fdf31a1e1c","marketplace":"BLUR","marketplaceData":"[\"sRW8uJHzbL+mliYw/hkZhOdesQQIoWt1EI2qUhDWZ9epeFnV2QqNeOf7s408bj8G5UJcmsmi2BdiwQeetxIGy+9b2MzyWwrK3nApzGTYi9K8SA3YwwmFkkvIH/6SLnXibIQN9XvGONpwIYDbo9cp2zPcKVBssLYg4EKC3hAGO2RD0OVcTNmS1BLZSHMxRL+Hha9XTQntei56sEyeoLE5ejNsQYkqwGynbi201SJArx8sQhop9/FZzwnwGDVnQ8nq+kW4wg5ULt4Kq6qcyLKMA4h0Eog+afHD4DZleg1+pu60f7bBoqdsct6MOnrgqfDS8PUsB28tlbpROOJG2gcavwxcIv7fZZFxvDggublr3mZwNlarboEgXVeYICVujxA6HWK83wn+grB3EGDITNPQMzhY3xOX0PeDVqKSZ7BAuDC+iux1/5WiNQeCc56ZynpO8Bjxj1Cdc9mHcL96zUAhQElnLVqbCv0Wm74pC3R8Z8c3uhTBcj8zAh6j3Z8sgNrC2RP762uDJzt2hS2nVFsXXUUBKHe/OgKxJI3LyNPgpKgqkcUWw2kf5bCqNUV2T7To5HaqEvYxLRpMBNpgKLgwi3hB4TJH4cCpAlfnVA/gD1iDDV/21Lr4sHCN+G36YD3b4RgRzMkWWYXmNrvQNGo94nOj8CkftuOnmg4Qu+IGLsEyAKn7QmpeX/r1TCw0GQI8BunmYhaaTIttyBqrbWcYAJGsXDNUXLaQOAqqA8mcmym075fFmXNp00I8TImIOtAxL0rYSEAwdi124ENHAC+XdiafQL55oP4TyFN/fL2Cl/unm1TEw+3pdgWahNwfWSgznzgIw8v8WcE2v+kxxOquCV4zWc1NpY5Mya/L4SHZetMAJV/qAiYaPg==\",\"1fYQxUSNin1OQCcK1gE4vw==\",\"pXgcothLYTbp0iRaagaEQw==\"]"}
+
+Response
+
+{"success":true}
