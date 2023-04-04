@@ -39,7 +39,7 @@ export default (): Resource => ({
     } = req.query
     if (!chain) return res.status(400).send('Chain not specified')
 
-    const URL = config.openseaApiBaseUrl + `orders/${chain}/seaport/listings`
+    const URL = config.openseaApiBaseUrl + `orders/${chain}/seaport/offers`
     const options = {
       method: 'GET',
       url: URL,
