@@ -36,7 +36,7 @@ if (!CHAIN_TAG) console.error('ERROR: NO "CHAIN_ID" PASSED IN ENVIRONMENT VARIAB
 
 export const config: HardhatUserConfig = {
   solidity: {
-    compilers: genCompilers(['0.8.12']), // separated by comma
+    compilers: genCompilers(['0.8.12', '0.8.17']), // separated by comma
   },
   typechain: {
     outDir: 'typechain',
