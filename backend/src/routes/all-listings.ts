@@ -40,7 +40,7 @@ export default (): Resource => ({
         res.status(200).send(response.data)
       })
       .catch((error) => {
-        res.status(500).send({ error: (error as Error).message })
+        res.status(500).send(error.response.data)
       })
   },
 })

@@ -49,8 +49,8 @@ export default (): Resource => ({
         token_ids: token_ids,
         maker: maker,
         taker: taker,
-        order_by: order_by ?? 'created_date',
-        order_direction: order_direction ?? 'desc',
+        order_by: order_by,
+        order_direction: order_direction,
         listed_after: listed_after,
         listed_before: listed_before,
       },
@@ -59,13 +59,14 @@ export default (): Resource => ({
         'X-RapidAPI-Host': process.env.X_RapidAPI_Host,
       },
     }
+
     await axios
       .request(options)
       .then((response) => {
         res.status(200).send(response.data)
       })
       .catch((error) => {
-        res.status(500).send({ error: (error as Error).message })
+        res.status(500).send(error.response.data)
       })
   },
 })

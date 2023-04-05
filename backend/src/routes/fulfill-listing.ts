@@ -1,10 +1,10 @@
 import { Resource } from 'express-automatic-routes'
-import { Request, response } from 'express'
 import axios from 'axios'
 
 import config from '@/config'
 import { ethers } from 'ethers'
 import { Seaport__factory } from '@/contracts/typechain/factories/contracts'
+import { getChainProvider } from '@/services/blockchain'
 
 export default (): Resource => ({
   async post(req, res) {
@@ -28,21 +28,21 @@ export default (): Resource => ({
       data: `{"listing":${listing},"fulfiller":${fulfiller}}`,
     }
 
-    const providerMatic = new ethers.providers.JsonRpcProvider(config.maticRpc)
-    const signerMatic = new ethers.Wallet('0x' + privateKey.slice(1, -1), providerMatic)
-    // await signerMatic.sendTransaction(response.data.fulfillment_data.transaction)
-
     await axios
       .request(options)
       .then((response) => {
         const txData = response.data.fulfillment_data.transaction
-        const seaport = Seaport__factory.connect(txData.to, signerMatic)
+
+        const provider = getChainProvider(txData.chain)
+        const signer = new ethers.Wallet('0x' + privateKey.slice(1, -1), provider)
+        const seaport = Seaport__factory.connect(txData.to, signer)
+
         switch (txData.function) {
           case 'fulfillBasicOrder_efficient_6GL6yc((address,uint256,uint256,address,address,address,uint256,uint256,uint8,uint256,uint256,bytes32,uint256,bytes32,bytes32,uint256,(uint256,address)[],bytes))':
             seaport
               .fulfillBasicOrder_efficient_6GL6yc(txData.input_data.parameters, {
                 value: txData.value.toString(),
-                maxPriorityFeePerGas: "50000000000",
+                maxPriorityFeePerGas: '50000000000',
               })
               .then((response) => {
                 res.status(200).send(response.hash)
@@ -55,7 +55,7 @@ export default (): Resource => ({
             seaport
               .fulfillBasicOrder(txData.input_data.parameters, {
                 value: txData.value.toString(),
-                maxPriorityFeePerGas: "50000000000",
+                maxPriorityFeePerGas: '50000000000',
               })
               .then((response) => {
                 res.status(200).send(response.hash)
@@ -68,7 +68,7 @@ export default (): Resource => ({
             seaport
               .fulfillBasicOrder_efficient_6GL6yc(txData.input_data.parameters, {
                 value: txData.value,
-                maxPriorityFeePerGas: "50000000000",
+                maxPriorityFeePerGas: '50000000000',
               })
               .then((response) => {
                 res.status(200).send(response.hash)

@@ -2,6 +2,19 @@
 // import { useContracts, getProvider, safeRead } from '@/gotbit-tools/node'
 // import { config } from '@/gotbit.config'
 
+import { ethers } from 'ethers'
+import {
+  arbitrumChainId,
+  arbitrumRpc,
+  avaxRpc,
+  ethChainId,
+  ethRpc,
+  maticChainId,
+  maticRpc,
+  optimismChainId,
+  optimismRpc,
+} from './consts'
+
 // export const getWallet = () =>
 //   new Wallet(process.env.PRIVATE_KEY, getProvider(config.DEFAULT_CHAINID))
 
@@ -86,3 +99,20 @@
 //   }
 //   return signedTransactions
 // }
+
+export function getChainProvider(chainId: number): ethers.providers.JsonRpcProvider {
+  switch (chainId) {
+    case ethChainId:
+      return new ethers.providers.JsonRpcProvider(ethRpc)
+    case maticChainId:
+      return new ethers.providers.JsonRpcProvider(maticRpc)
+    case arbitrumChainId:
+      return new ethers.providers.JsonRpcProvider(arbitrumRpc)
+    case optimismChainId:
+      return new ethers.providers.JsonRpcProvider(optimismRpc)
+    case ethChainId:
+      return new ethers.providers.JsonRpcProvider(avaxRpc)
+    default:
+      throw new Error('Wrong chain id')
+  }
+}
