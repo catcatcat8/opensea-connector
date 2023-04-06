@@ -80,7 +80,7 @@ export default (): Resource => ({
         }
       })
       .catch((error) => {
-        res.status(500).send({ error: (error as Error).message })
+        res.status(500).send(error.response.data)
       })
   },
 })
